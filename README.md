@@ -1,7 +1,7 @@
 # blockchain-developer-bootcamp-final-project
 Repository created for the final Consensys Bootcamp 2021 project.
 
-## System for ordering audits
+## System dedicated for audits
 
 A system that allows any person to order an audit from individuals for a specific contract.
 
@@ -21,7 +21,7 @@ A system that allows any person to order an audit from individuals for a specifi
 + Delegating individual activities to designated roles so that everyone can focus on what suits them best.
 + Building a reputation system for auditors and principals.
 
-### Project elements
+### Project flow
 
 + Submission of contracts requiring an audit by principals.
   +  Must set a realistic date before which the tests must be completed (>8days from now).
@@ -36,11 +36,27 @@ A system that allows any person to order an audit from individuals for a specifi
 + After the principals have paid the amount, auditors proceed with the audit.
   + To participate, their valuation had to be within the set budget.
   + They have time to which they can submit reports.
++ Auditors submit report and a list of finds.
 + After the specified date, the possibility of sending reports ends.
   + If they don't submit their report, they lose some of their funds.
-+ TBD
++ Quality guards vote on lists to choose the one with highest quality finds.
++ Principal, gets a report containing the descriptions of the vulnerabilities from the list selected by the guards.
+  + If the report contains vulnerabilities from the list, the payment is sent to the auditor.
+  + If the report does not contain the promised elements, it may be submitted for dispute
++ During the dispute, quality dogs look at the report and check if it complies with the list.
+  + If the dispute was right, the auditor loses reputation and funds, and the guards choose the next list.
+  + If the dispute was unfair, the principal loses reputation and funds. Auditor gets paid.
 
+### Future ideas:
++ Form companies and build a company's reputation based on individuals behavior.
 
 ## The first part of the project to be implemented during Consensys Bootcam 2021
 
-### TBD
+### Submition of projects by principals.
+
+1. Principal: Locks 1 ether on a contract to be able to submit contracts for an audit.
+2. Principal: (They can give up thier decision and retrieve the sent ether).
+3. Principal: Indicate the contract for which they want an audit (possible only for those who deposited ether).
+4. Principal: Sets the date by which the tests must end. (>8 days).
+
+
