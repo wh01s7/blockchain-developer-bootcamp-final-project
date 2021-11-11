@@ -59,4 +59,6 @@ A system that allows any person to order an audit from individuals for a specifi
 3. Principal: Indicate the contract for which they want an audit (possible only for those who deposited ether).
 4. Principal: Sets the date by which the tests must end. (>8 days).
 
+## Required dependencies:
 
+    npm install @openzeppelin/contracts   
