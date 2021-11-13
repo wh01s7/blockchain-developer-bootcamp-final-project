@@ -63,7 +63,8 @@ function joinPlatform(Role _role) payable public whenNotPaused {
   uint amount = balances[msg.sender] - requiredDeposit;
   emit NewMember(msg.sender,role[msg.sender]);
   if(amount > 0){
-    payable(msg.sender).call{value:amount};
+    (bool sent,) = payable(msg.sender).call{value:amount}("");
+    require(sent, "Failed to return Ether");
   }
 
 }
@@ -76,7 +77,8 @@ function exitPlatform() external {
   amount = balances[msg.sender];
   balances[msg.sender]=0;
   emit MemberLeft(msg.sender,role[msg.sender]);
-  payable(msg.sender).call{value:amount};
+  (bool sent,) = payable(msg.sender).call{value:amount}("");
+  require(sent, "Failed to return Ether");
 }
 
 ///@notice Let users to change their current role to another.
@@ -125,7 +127,8 @@ function withdraw() external {
     require(balances[msg.sender]>0, "No funds to withdraw");
     uint amount = balances[msg.sender];
     balances[msg.sender] = 0;
-    payable(msg.sender).call{value:amount};
+    (bool sent,) = payable(msg.sender).call{value:amount}("");
+    require(sent, "Failed to return Ether");
 }
 
 ///@notice Get information how many audits were submitted so far.
