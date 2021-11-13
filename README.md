@@ -62,3 +62,4 @@ A system that allows any person to order an audit from individuals for a specifi
 ## Required dependencies:
 
     npm install @openzeppelin/contracts   
+    npm install truffle-assertions
