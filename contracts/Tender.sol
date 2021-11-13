@@ -60,9 +60,9 @@ function joinPlatform(Role _role) payable public whenNotPaused {
   require(msg.value>=requiredDeposit, "Not enough funds were send");
   role[msg.sender]=_role;
   balances[msg.sender]+=msg.value;
-  uint amount = balances[msg.sender] - requiredDeposit;
   emit NewMember(msg.sender,role[msg.sender]);
-  if(amount > 0){
+  if(balances[msg.sender] - requiredDeposit > 0){
+    uint amount = balances[msg.sender] - requiredDeposit;
     (bool sent,) = payable(msg.sender).call{value:amount}("");
     require(sent, "Failed to return Ether");
   }

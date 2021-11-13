@@ -9,13 +9,13 @@ contract("Tender", function (accounts) {
   describe("Initial state", () => {
 
     it("should assert true", async function () {
-      await Tender.deployed();
+      await Tender.new();
       return assert.isTrue(true);
     });
 
     it("should have initially 0 audits", async function () {
       //Get the contract that has been deployed
-      const TenderInstance = await Tender.deployed();
+      const TenderInstance = await Tender.new();
       //Store audits number initial value 
       const tInitialAuditsNumber = await TenderInstance.checkAuditsNumber.call();
       //Verify if its 0
@@ -24,42 +24,60 @@ contract("Tender", function (accounts) {
 
     it("should have initially 1 ether as required deposit", async function () {
       //Get the contract that has been deployed
-      const TenderInstance = await Tender.deployed();
+      const TenderInstance = await Tender.new();
       //Store required deposit initial value 
-      const InitialRequiredDeposit = await TenderInstance.requiredDeposit.call();
+      const tInitialRequiredDeposit = await TenderInstance.requiredDeposit.call();
       //Verify if its 1 ether
-      assert.equal(InitialRequiredDeposit, 10 ** 18, "Initial requiredDeposit should be 1 ether");
+      assert.equal(tInitialRequiredDeposit, web3.utils.toWei("1", "ether"), "Initial requiredDeposit should be 1 ether");
     })
 
     it("should have initially 2 ether as minimumWage", async function () {
       //Get the contract that has been deployed
-      const TenderInstance = await Tender.deployed();
+      const TenderInstance = await Tender.new();
       //Store the minimum wage initial value 
       const tInitialMinimalWage = await TenderInstance.minimalWage.call();
       //Verify if its 2 ether
-      assert.equal(tInitialMinimalWage, 2 * 10 ** 18, "Initial requiredDeposit should be 2 ether");
+      assert.equal(tInitialMinimalWage, web3.utils.toWei("2", "ether"), "Initial requiredDeposit should be 2 ether");
     })
   })
 
   describe("Basic functionality", () => {
     it("should allow to join the platform as Principal when sending minimalWage", async function () {
+      //Get the contract that has been deployed
+      const TenderInstance = await Tender.new();
       //Set 2 accounts
       const [account_one, account_two] = accounts;
-      //Get the contract that has been deployed
-      const TenderInstance = await Tender.deployed();
+      //Set roles
+      const [None, Principal, Auditor, QualityGuard] = [0, 1, 2, 3];
       //Store the minimum wage initial value
       const tInitialRequiredDeposit = await TenderInstance.requiredDeposit.call();
+
+      //Verify if its 1 ether
+      assert.equal(tInitialRequiredDeposit, web3.utils.toWei("1", "ether"), "Initial requiredDeposit should be 1 ether");
+      
+      //Check balance of account_one and contract BEFORE
+      let account_one_balance = await web3.eth.getBalance(account_one);
+      let tender_contract_balance = await web3.eth.getBalance(TenderInstance.address);
+      console.log("account_one_balance BEFORE: " + account_one_balance)
+      console.log("tender_contract_balance BEFORE: " + tender_contract_balance)
+      
       //Join the platform as Principal by sending required amount
-      try {
-        await TenderInstance.joinPlatform.call(1, {
-          from: account_one,
-          value: tInitialRequiredDeposit
-        })
-      } catch (err) {}
+      await TenderInstance.joinPlatform(Principal, {
+        from: account_one,
+        value: tInitialRequiredDeposit
+      })
+      
+      //Check balance of account_one and contract AFTER
+      let account_one_balance1 = await web3.eth.getBalance(account_one);
+      let tender_contract_balance1 = await web3.eth.getBalance(TenderInstance.address);
+      console.log("TX: Joining the platform")
+      console.log("account_one_balance AFTER: " + account_one_balance1)
+      console.log("tender_contract_balance AFTER: " + tender_contract_balance1)
+      
       //Check the current role of the account that joined the platform
-      const tRole = await TenderInstance.checkRole.call(account_one);
+      const tRole = await TenderInstance.checkRole(account_one);
       //Verify if the role is Principal
-      assert.equal(tRole, 1, "Not principal");
+      assert.equal(tRole, Principal, "Not principal");
     })
 
     //it("should return the excess amount transferred after joining the platform to the msg.sender")
