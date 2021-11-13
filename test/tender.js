@@ -43,20 +43,22 @@ contract("Tender", function (accounts) {
 
   describe("Basic functionality", () => {
     it("should allow to join the platform as Principal when sending minimalWage", async function () {
-      //Sets 2 accounts
+      //Set 2 accounts
       const [account_one, account_two] = accounts;
       //Get the contract that has been deployed
       const TenderInstance = await Tender.deployed();
       //Store the minimum wage initial value
       const tInitialRequiredDeposit = await TenderInstance.requiredDeposit.call();
       //Join the platform as Principal by sending required amount
-      await TenderInstance.joinPlatform.call(1, {
-        from: account_one,
-        value: 2 * tInitialRequiredDeposit
-      });
+      try {
+        await TenderInstance.joinPlatform.call(1, {
+          from: account_one,
+          value: tInitialRequiredDeposit
+        })
+      } catch (err) {}
       //Check the current role of the account that joined the platform
       const tRole = await TenderInstance.checkRole.call(account_one);
-      //Verifies if the role is Principal
+      //Verify if the role is Principal
       assert.equal(tRole, 1, "Not principal");
     })
 
