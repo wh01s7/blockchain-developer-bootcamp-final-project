@@ -1,9 +1,52 @@
-# blockchain-developer-bootcamp-final-project
-Repository created for the final Consensys Bootcamp 2021 project.
+# Deployed version url:
+https://whereispawel.github.io/blockchain-developer-bootcamp-final-project/
 
 ## System dedicated for audits
 
-A system that allows any person to order an audit from individuals for a specific contract.
+A system that will allow any person to order an audit from individuals for a specific contracts.
+
+## The first part of the project to be implemented during Consensys Bootcam 2021
+
+### Joining the platform & audit submitions
+
+Basic flow:
+1. Enter web site
+2. Login with Metamask and observe your current role (smart contract call)
+3. Select role (e.g., 1 - to become Principal)
+4. Agree on contract, pay required deposit with Metamask (smart contract call)
+5. Observe how your role changed to the new one (smart contract call)
+
+## Project files tree
+
+    .
+    ├── build
+    │   └── contracts
+    │       ├── Context.json
+    │       ├── Counters.json
+    │       ├── Migrations.json
+    │       ├── Ownable.json
+    │       ├── Pausable.json
+    │       └── Tender.json
+    ├── client
+    │   └── dapp.js
+    ├── contracts
+    │   ├── Migrations.sol
+    │   ├── Structs.sol
+    │   └── Tender.sol
+    ├── documents
+    │   ├── avoiding_common_attacks.md
+    │   └── design_pattern_decisions.md
+    ├── index.html
+    ├── migrations
+    │   ├── 1_initial_migration.js
+    │   └── 2_tender_migration.js
+    ├── package.json
+    ├── package-lock.json
+    ├── README.md
+    ├── test
+    │   └── tender.js
+    └── truffle-config.js
+
 
 ### Problems
 
@@ -21,15 +64,16 @@ A system that allows any person to order an audit from individuals for a specifi
 + Delegating individual activities to designated roles so that everyone can focus on what suits them best.
 + Building a reputation system for auditors and principals.
 
-### Project flow
+### Project future flow
 
++ Joining the platform.
 + Submission of contracts requiring an audit by principals.
-  +  Must set a realistic date before which the tests must be completed (>8days from now).
+  +  Must set a realistic date before which the tests must be completed (>Ydays from now).
   +  Must specify contract with exact commit.
   +  Must have at least X eth blocked.
-+ Start 7 days during which auditors can participate in the tender.
++ Start X days during which auditors can participate in the tender.
 + Determining the scope and price for the work performed by auditors.
-+ After 7 days, the principals have one day to set the maximum budget they want to spend.
++ After X days, the principals have one day to set the maximum budget they want to spend.
   + Based on the bids submitted.
   + Transfers the required funds to the contract.
   + Lock for the time of tests.
@@ -49,15 +93,6 @@ A system that allows any person to order an audit from individuals for a specifi
 
 ### Future ideas:
 + Form companies and build a company's reputation based on individuals behavior.
-
-## The first part of the project to be implemented during Consensys Bootcam 2021
-
-### Submition of projects by principals.
-
-1. Principal: Locks 1 ether on a contract to be able to submit contracts for an audit.
-2. Principal: (They can give up thier decision and retrieve the sent ether).
-3. Principal: Indicate the contract for which they want an audit (possible only for those who deposited ether).
-4. Principal: Sets the date by which the tests must end. (>8 days).
 
 ## Required dependencies:
 
