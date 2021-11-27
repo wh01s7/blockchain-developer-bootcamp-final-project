@@ -34,5 +34,15 @@ tenderSubmit.onclick = async () => {
 
 }
 
+const tenderCheckRole = document.getElementById('tender-input-button');
+tenderCheckRole.onclick = async () => {
+    const tenderAddressValue = document.getElementById('tender-input-box').value;
+    
+    var web3 = new Web3(window.ethereum)
 
+    const Tender = new web3.eth.Contract(tenderABI, tenderAddress)
+
+    await Tender.methods.checkRole().send({from: ethereum.selectedAddress})
+
+}
 

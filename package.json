@@ -1,0 +1,25 @@
+{
+  "name": "tender-package",
+  "version": "1.0.0",
+  "description": "Repository created for the final Consensys Bootcamp 2021 project.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whereispawel/blockchain-developer-bootcamp-final-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whereispawel/blockchain-developer-bootcamp-final-project/issues"
+  },
+  "homepage": "https://github.com/whereispawel/blockchain-developer-bootcamp-final-project#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
