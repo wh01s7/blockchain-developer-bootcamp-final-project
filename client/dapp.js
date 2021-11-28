@@ -2,11 +2,6 @@ const tenderAddress = '0x230048ef7541D0Ba876b5DCeFc5E4ebF69AD958a'
 
 const tenderABI = [
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -30,65 +25,6 @@ const tenderABI = [
 		],
 		"name": "AuditCanceled",
 		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			}
-		],
-		"name": "cancelAudit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_minimalWage",
-				"type": "uint256"
-			}
-		],
-		"name": "changeMinimumWage",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_requiredDeposit",
-				"type": "uint256"
-			}
-		],
-		"name": "changeRequiredDeposit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "exitPlatform",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "enum Role",
-				"name": "_role",
-				"type": "uint8"
-			}
-		],
-		"name": "joinPlatform",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
 	},
 	{
 		"anonymous": false,
@@ -249,6 +185,78 @@ const tenderABI = [
 		"type": "event"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Unpaused",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "cancelAudit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_minimalWage",
+				"type": "uint256"
+			}
+		],
+		"name": "changeMinimumWage",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_requiredDeposit",
+				"type": "uint256"
+			}
+		],
+		"name": "changeRequiredDeposit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "exitPlatform",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum Role",
+				"name": "_role",
+				"type": "uint8"
+			}
+		],
+		"name": "joinPlatform",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "renounceOwnership",
 		"outputs": [],
@@ -311,24 +319,16 @@ const tenderABI = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "Unpaused",
-		"type": "event"
-	},
-	{
 		"inputs": [],
 		"name": "withdraw",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"inputs": [
@@ -565,6 +565,7 @@ const tenderABI = [
 	}
 ]
 
+
 window.addEventListener('load', function(){
     if(typeof window.ethereum !== 'undefined') {
         let mmDetected = document.getElementById('mm-detected')
@@ -612,7 +613,8 @@ mmEnable.onclick = async () => {
 
 const tenderSubmit = document.getElementById('tender-input-button');
 tenderSubmit.onclick = async () => {
-    const tenderValue = document.getElementById('tender-input-box').value;
+    await ethereum.request({ method: 'eth_requestAccounts' })
+	const tenderValue = document.getElementById('tender-input-box').value;
     let roleDetected = document.getElementById('role-detected')
     
     var web3 = new Web3(window.ethereum)
@@ -644,13 +646,14 @@ tenderSubmit.onclick = async () => {
 //
 const tenderExit = document.getElementById('tender-exit-button');
 tenderExit.onclick = async () => {
-    let roleDetected = document.getElementById('role-detected')
+    await ethereum.request({ method: 'eth_requestAccounts' })
+	let roleDetected = document.getElementById('role-detected')
     
     var web3 = new Web3(window.ethereum)
 
     const Tender = new web3.eth.Contract(tenderABI, tenderAddress)
 
-    await Tender.methods.exitPlatform().call({from: ethereum.selectedAddress})
+    await Tender.methods.exitPlatform().send({from: ethereum.selectedAddress})
 
     let Role = await Tender.methods.checkRole(ethereum.selectedAddress).call()
 
