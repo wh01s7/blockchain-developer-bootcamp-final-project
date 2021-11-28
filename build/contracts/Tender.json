@@ -29614,10 +29614,207 @@
       "transactionHash": "0xcba45a152bd6740b8b8b037f9077a48a2073022a57b7ac8fbbeba4478321d118"
     },
     "1337": {
-      "events": {},
+      "events": {
+        "0x7ed04abec162392c200fe374c6498af8dd7a0d837078575c7a1a63197fe5a8a7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "_id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_principal",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_prize",
+              "type": "uint256"
+            }
+          ],
+          "name": "AuditCanceled",
+          "type": "event"
+        },
+        "0x6ca867bd7dbfbe0ed4df9e1b6af381331ea2969f24b092cfb644487ee2af4a2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "member",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Role",
+              "name": "_role",
+              "type": "uint8"
+            }
+          ],
+          "name": "MemberLeft",
+          "type": "event"
+        },
+        "0xf38a25d6dff03e60fb768e2b5a76eac80ee2c45f7ff77a28e7df0505f0878914": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "_id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_principal",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_repo",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_commitID",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_days",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_prize",
+              "type": "uint256"
+            }
+          ],
+          "name": "NewAudit",
+          "type": "event"
+        },
+        "0x1745a89b3324b491897811e54cb25c817b0100db7aef1bc3c3a00a9ebd54ae0b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "member",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Role",
+              "name": "_role",
+              "type": "uint8"
+            }
+          ],
+          "name": "NewMember",
+          "type": "event"
+        },
+        "0x25addee16f90116a4541769a4234912a19ded186225d7e71482e47287f2d4df3": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_minimalWage",
+              "type": "uint256"
+            }
+          ],
+          "name": "NewMinimalWage",
+          "type": "event"
+        },
+        "0x321783b4d49a1286813914595d0caf890fb7f57f04caf269e7188d7edf0e79db": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_requiredDeposit",
+              "type": "uint256"
+            }
+          ],
+          "name": "NewRequiredDeposit",
+          "type": "event"
+        },
+        "0x8afbad8ac3d2710e7451035a65460b127a29d7d0795166907d74bb45a542b9e4": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "member",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Role",
+              "name": "_role",
+              "type": "uint8"
+            }
+          ],
+          "name": "NewRole",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "Paused",
+          "type": "event"
+        },
+        "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "Unpaused",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0xcE7Ca09BcCf76E2e0Bc58e458B0DcC93ea0E012D",
-      "transactionHash": "0x26c2a628a622751b2869f75a672716220df8c1de33993ff281f8a2330c65645e"
+      "address": "0xDfde5dEbD16110e02F26d80D666660bB7Fedf887",
+      "transactionHash": "0x507ed23982f859c73aa362e57c5645a8051d2328eb2851960d692c8bbc4705c2"
     },
     "5777": {
       "events": {},
@@ -29627,7 +29824,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-27T21:27:35.988Z",
+  "updatedAt": "2021-11-28T11:20:08.141Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

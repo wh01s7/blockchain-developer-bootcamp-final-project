@@ -641,6 +641,53 @@ tenderSubmit.onclick = async () => {
 
 }
 
+//
+const tenderExit = document.getElementById('tender-exit-button');
+tenderExit.onclick = async () => {
+    let roleDetected = document.getElementById('role-detected')
+    
+    var web3 = new Web3(window.ethereum)
+
+    const Tender = new web3.eth.Contract(tenderABI, tenderAddress)
+
+    await Tender.methods.exitPlatform().call({from: ethereum.selectedAddress})
+
+    let Role = await Tender.methods.checkRole(ethereum.selectedAddress).call()
+
+    if(Role == 0){
+        roleDetected.innerHTML = "None"
+    }
+    else if(Role == 1){
+        roleDetected.innerHTML = "Principal"
+    }
+    else if(Role == 2){
+        roleDetected.innerHTML = "Auditor"
+    }
+    else if(Role == 3){
+        roleDetected.innerHTML = "QualityGuard"
+    }
+    else {
+        console.log('Error with checking role')
+    }
+
+}
+//
+
+const tenderAuditNum = document.getElementById('tender-auditsNum-input-button');
+tenderAuditNum.onclick = async () => {
+    let numAudits = document.getElementById('num-audits')
+    
+    var web3 = new Web3(window.ethereum)
+
+    const Tender = new web3.eth.Contract(tenderABI, tenderAddress)
+
+    let AuditsNumber = await Tender.methods.checkAuditsNumber().call()
+
+    numAudits.innerHTML = "There are " + AuditsNumber + " submitted audits."
+
+
+}
+
 
 
 

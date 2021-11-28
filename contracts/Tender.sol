@@ -59,14 +59,13 @@ function joinPlatform(Role _role) payable public whenNotPaused {
   require(role[msg.sender]==Role.None && _role != Role.None,"User already joined");
   require(msg.value>=requiredDeposit, "Not enough funds were send");
   role[msg.sender]=_role;
-  balances[msg.sender]+=msg.value;
-  emit NewMember(msg.sender,role[msg.sender]);
-  if(balances[msg.sender] - requiredDeposit > 0){
-    uint amount = balances[msg.sender] - requiredDeposit;
-    (bool sent,) = payable(msg.sender).call{value:amount}("");
-    require(sent, "Failed to return Ether");
+  balances[msg.sender]+=requiredDeposit;
+  if(msg.value > requiredDeposit){
+      uint amount = msg.value - requiredDeposit;
+      (bool sent,) = payable(msg.sender).call{value:amount}("");
+      require(sent, "Failed to return Ether");
   }
-
+  emit NewMember(msg.sender,role[msg.sender]);
 }
 
 ///@notice Let users exit platform and get back locked eth.
