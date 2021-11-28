@@ -1,4 +1,4 @@
-const tenderAddress = '0x156FE65623B68f7206Bad2750549EbB255C74181'
+const tenderAddress = '0x230048ef7541D0Ba876b5DCeFc5E4ebF69AD958a'
 
 const tenderABI = [
 	{
@@ -30,6 +30,65 @@ const tenderABI = [
 		],
 		"name": "AuditCanceled",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "cancelAudit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_minimalWage",
+				"type": "uint256"
+			}
+		],
+		"name": "changeMinimumWage",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_requiredDeposit",
+				"type": "uint256"
+			}
+		],
+		"name": "changeRequiredDeposit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "exitPlatform",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum Role",
+				"name": "_role",
+				"type": "uint8"
+			}
+		],
+		"name": "joinPlatform",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
 	},
 	{
 		"anonymous": false,
@@ -190,6 +249,68 @@ const tenderABI = [
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_repo",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_commitID",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_days",
+				"type": "uint256"
+			}
+		],
+		"name": "requestAudit",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum Role",
+				"name": "_role",
+				"type": "uint8"
+			}
+		],
+		"name": "switchRole",
+		"outputs": [
+			{
+				"internalType": "enum Role",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -201,6 +322,13 @@ const tenderABI = [
 		],
 		"name": "Unpaused",
 		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -249,45 +377,6 @@ const tenderABI = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			}
-		],
-		"name": "cancelAudit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_minimalWage",
-				"type": "uint256"
-			}
-		],
-		"name": "changeMinimumWage",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_requiredDeposit",
-				"type": "uint256"
-			}
-		],
-		"name": "changeRequiredDeposit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -372,6 +461,19 @@ const tenderABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "checkAuditsNumber",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -385,19 +487,6 @@ const tenderABI = [
 				"internalType": "enum Status",
 				"name": "",
 				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "checkAuditsNumber",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -420,26 +509,6 @@ const tenderABI = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "exitPlatform",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "enum Role",
-				"name": "_role",
-				"type": "uint8"
-			}
-		],
-		"name": "joinPlatform",
-		"outputs": [],
-		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -483,36 +552,6 @@ const tenderABI = [
 	},
 	{
 		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_repo",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_commitID",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_days",
-				"type": "uint256"
-			}
-		],
-		"name": "requestAudit",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "requiredDeposit",
 		"outputs": [
 			{
@@ -522,45 +561,6 @@ const tenderABI = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "enum Role",
-				"name": "_role",
-				"type": "uint8"
-			}
-		],
-		"name": "switchRole",
-		"outputs": [
-			{
-				"internalType": "enum Role",
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
