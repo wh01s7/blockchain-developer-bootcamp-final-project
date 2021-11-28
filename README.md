@@ -1,4 +1,4 @@
-# Deployed version url:
+# Deployed version url
 https://whereispawel.github.io/blockchain-developer-bootcamp-final-project/
 
 ## System dedicated for audits
@@ -7,7 +7,7 @@ A system that will allow any person to order an audit from individuals for a spe
 
 ## The first part of the project to be implemented during Consensys Bootcam 2021
 
-### Joining the platform & audit submitions
+### Joining the platform & audit submitions:
 
 Basic flow:
 1. Enter web site
@@ -35,6 +35,7 @@ Basic flow:
     │   └── Tender.sol
     ├── documents
     │   ├── avoiding_common_attacks.md
+    │   ├── deployed_address.txt
     │   └── design_pattern_decisions.md
     ├── index.html
     ├── migrations
@@ -48,14 +49,14 @@ Basic flow:
     └── truffle-config.js
 
 
-### Problems
+### Problems:
 
 + Lack of single place where you can submit a request for an audit or take a project.
 + Slow normalization of the market price due to the confidentiality of rates.
 + Long waiting times for audits due to the lack of knowledge of the companies that perform them.
 + Inability to verify that the work has been done well and we are satisfied with the results until we pay for it.
 
-### Solutions
+### Solutions:
 
 + Creation of a single place to handle audits.
 + Cost and time reduction on the part of the contracting authority.
@@ -64,7 +65,7 @@ Basic flow:
 + Delegating individual activities to designated roles so that everyone can focus on what suits them best.
 + Building a reputation system for auditors and principals.
 
-### Project future flow
+### Project future flow:
 
 + Joining the platform.
 + Submission of contracts requiring an audit by principals.
@@ -94,7 +95,32 @@ Basic flow:
 ### Future ideas:
 + Form companies and build a company's reputation based on individuals behavior.
 
-## Required dependencies:
+# Inctructions
 
-    npm install @openzeppelin/contracts   
-    npm install truffle-assertions
+### Enviroment:
+
+    Truffle v5.4.10 (core: 5.4.10)
+    Solidity - 0.8.7 (solc-js)
+    Node v12.22.5
+    Web3.js v1.5.2
+    npm 7.5.2
+
+### Required dependencies:
+
+    npm init
+
+### Run tests locally:
+
+    truffle migrate --network development
+    truffle test
+
+### Development network configuration:
+
+    development: {
+      host: "127.0.0.1",     
+      port: 8545,            
+      network_id: "1337",    
+     }
+
+## Public Ethereum wallet for certification
+0x8F6CFB4b424C867C752d5B79c4120Fb6B0fe59aA
