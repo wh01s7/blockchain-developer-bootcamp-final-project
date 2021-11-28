@@ -1,6 +1,9 @@
 # Deployed version url
 https://whereispawel.github.io/blockchain-developer-bootcamp-final-project/
 
+## Screencast
+https://www.youtube.com/watch?v=S8CDKlX0dM0
+
 ## System dedicated for audits
 
 A system that will allow any person to order an audit from individuals for a specific contracts.
@@ -15,6 +18,8 @@ Basic flow:
 3. Select role (e.g., 1 - to become Principal)
 4. Agree on contract, pay required deposit with Metamask (smart contract call)
 5. Observe how your role changed to the new one (smart contract call)
+6. Exit platform (smart contract call)
+7. Observe how your role changed to the new one (smart contract call)
 
 ## Project files tree
 
